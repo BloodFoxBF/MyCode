@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models;
 using Backend.Extensions;
+using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {
@@ -61,12 +62,14 @@ namespace Backend.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProblem(int id, Problem problem)
+        public async Task<IActionResult> PutProblem(string jsonProblem)
         {
-            if (id != problem.ProblemId)
-            {
-                return BadRequest();
-            }
+            Problem problem = JsonConvert.DeserializeObject<Problem>(jsonProblem);
+            
+            //if (id != problem.ProblemId)
+            //{
+            //    return BadRequest();
+            //}
 
             _context.Entry(problem).State = EntityState.Modified;
 
@@ -76,14 +79,14 @@ namespace Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProblemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                //if (!ProblemExists(id))
+                //{
+                //    return NotFound();
+                //}
+                //else
+                //{
+                //    throw;
+                //}
             }
 
             return NoContent();
@@ -120,6 +123,16 @@ namespace Backend.Controllers
         private bool ProblemExists(int id)
         {
             return _context.Problems.Any(e => e.ProblemId == id);
+        }
+
+        void jsonDeserializeObject(string jsonString)
+        {
+            Problem problem = JsonConvert.DeserializeObject<Problem>(jsonString);            
+        }
+
+        void jsonSerialize(Problem problem)
+        {
+            string json = JsonConvert.SerializeObject(problem);
         }
     }
 }

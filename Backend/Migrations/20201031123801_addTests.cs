@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Backend.Migrations
 {
-    public partial class addMarks : Migration
+    public partial class addTests : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,6 +35,26 @@ namespace Backend.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Teachers", x => x.TeacherId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Test",
+                columns: table => new
+                {
+                    TestId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Description = table.Column<string>(nullable: true),
+                    ProblemId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Test", x => x.TestId);
+                    table.ForeignKey(
+                        name: "FK_Test_Problems_ProblemId",
+                        column: x => x.ProblemId,
+                        principalTable: "Problems",
+                        principalColumn: "ProblemId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,7 +107,8 @@ namespace Backend.Migrations
                     StudentId = table.Column<int>(nullable: false),
                     ProblemId = table.Column<int>(nullable: false),
                     Mark = table.Column<int>(nullable: false),
-                    isSolved = table.Column<bool>(nullable: false)
+                    isSolved = table.Column<bool>(nullable: false),
+                    StartDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -124,6 +146,11 @@ namespace Backend.Migrations
                 name: "IX_Students_GroupId",
                 table: "Students",
                 column: "GroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Test_ProblemId",
+                table: "Test",
+                column: "ProblemId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -132,10 +159,13 @@ namespace Backend.Migrations
                 name: "AssignedTasks");
 
             migrationBuilder.DropTable(
-                name: "Problems");
+                name: "Test");
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Problems");
 
             migrationBuilder.DropTable(
                 name: "Groups");
