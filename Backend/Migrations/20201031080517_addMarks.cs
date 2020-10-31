@@ -2,7 +2,7 @@
 
 namespace Backend.Migrations
 {
-    public partial class _3 : Migration
+    public partial class addMarks : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,11 +12,48 @@ namespace Backend.Migrations
                 {
                     ProblemId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Legend = table.Column<string>(nullable: true),
+                    Requirement = table.Column<string>(nullable: true),
+                    Example = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Problems", x => x.ProblemId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Teachers",
+                columns: table => new
+                {
+                    TeacherId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teachers", x => x.TeacherId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Groups",
+                columns: table => new
+                {
+                    GroupId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(nullable: true),
+                    TeacherId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Groups", x => x.GroupId);
+                    table.ForeignKey(
+                        name: "FK_Groups_Teachers_TeacherId",
+                        column: x => x.TeacherId,
+                        principalTable: "Teachers",
+                        principalColumn: "TeacherId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,7 +84,9 @@ namespace Backend.Migrations
                     AssignedProblemId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     StudentId = table.Column<int>(nullable: false),
-                    ProblemId = table.Column<int>(nullable: false)
+                    ProblemId = table.Column<int>(nullable: false),
+                    Mark = table.Column<int>(nullable: false),
+                    isSolved = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -77,6 +116,11 @@ namespace Backend.Migrations
                 column: "StudentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Groups_TeacherId",
+                table: "Groups",
+                column: "TeacherId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Students_GroupId",
                 table: "Students",
                 column: "GroupId");
@@ -92,6 +136,12 @@ namespace Backend.Migrations
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Groups");
+
+            migrationBuilder.DropTable(
+                name: "Teachers");
         }
     }
 }

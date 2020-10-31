@@ -9,6 +9,9 @@ namespace Backend.Models
     {
         public int ProblemId { get; set; }
         public string Name { get; set; }
+        public string Legend { set; get; }
+        public string Requirement { set; get; }
+        public string Example { set; get; }
         public virtual ICollection<AssignedProblem> AssignedProblems { get; set; }
     }
 }

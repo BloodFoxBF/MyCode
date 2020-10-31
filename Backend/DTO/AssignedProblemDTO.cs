@@ -11,6 +11,7 @@ namespace Backend.Models
         public int AssignedProblemId { get; set; }
         public int StudentId { get; set; }
         public int ProblemId { get; set; }
+        public int Mark { get; set; }
         public StudentDTO Student { get; set; }
         public ProblemDTO Problem { get; set; }
     }

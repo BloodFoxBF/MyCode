@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models;
+using Backend.Extensions;
+using Backend.DTO;
+using Newtonsoft.Json;
 
 namespace Backend.Controllers
 {
@@ -22,9 +25,20 @@ namespace Backend.Controllers
 
         // GET: api/Groups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Group>>> GetGroups()
+        public async Task<ActionResult<IEnumerable<GroupDTO>>> GetGroups(int teacherID)
         {
-            return await _context.Groups.ToListAsync();
+            var groupList = await _context.GetAllAsync<Group>(x => x.Teacher.TeacherId == teacherID);
+            List<GroupDTO> groupDTOs = new List<GroupDTO>();
+            foreach (var group in groupList)
+            {
+                var groupDTO = new GroupDTO()
+                {
+                    Name = group.Name
+                };
+                groupDTOs.Add(groupDTO);
+            }
+
+            return new ActionResult<IEnumerable<GroupDTO>>(groupDTOs);
         }
 
         // GET: api/Groups/5
