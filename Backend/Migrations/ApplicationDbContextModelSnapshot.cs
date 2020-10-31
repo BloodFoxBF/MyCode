@@ -22,10 +22,19 @@ namespace Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Mark")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ProblemId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("StudentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("isSolved")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("AssignedProblemId");
@@ -46,7 +55,7 @@ namespace Backend.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("TeacherId")
+                    b.Property<int>("TeacherId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("GroupId");
@@ -118,6 +127,25 @@ namespace Backend.Migrations
                     b.ToTable("Teachers");
                 });
 
+            modelBuilder.Entity("Backend.Models.Test", b =>
+                {
+                    b.Property<int>("TestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("ProblemId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("TestId");
+
+                    b.HasIndex("ProblemId");
+
+                    b.ToTable("Test");
+                });
+
             modelBuilder.Entity("Backend.Models.AssignedProblem", b =>
                 {
                     b.HasOne("Backend.Models.Problem", "Problem")
@@ -137,7 +165,9 @@ namespace Backend.Migrations
                 {
                     b.HasOne("Backend.Models.Teacher", "Teacher")
                         .WithMany("Groups")
-                        .HasForeignKey("TeacherId");
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Backend.Models.Student", b =>
@@ -147,6 +177,13 @@ namespace Backend.Migrations
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Backend.Models.Test", b =>
+                {
+                    b.HasOne("Backend.Models.Problem", "Problem")
+                        .WithMany()
+                        .HasForeignKey("ProblemId");
                 });
 #pragma warning restore 612, 618
         }

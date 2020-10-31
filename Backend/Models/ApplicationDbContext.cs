@@ -40,6 +40,7 @@ namespace Backend.Models
         public DbSet<Problem> Problems { get; set; }
         public DbSet<AssignedProblem> AssignedTasks { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Backend.Models.Test> Test { get; set; }
 
     }
 }

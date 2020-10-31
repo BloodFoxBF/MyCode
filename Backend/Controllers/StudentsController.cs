@@ -25,10 +25,10 @@ namespace Backend.Controllers
 
         // GET: api/Students
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<StudentDTO>>> GetStudents()
+        public async Task<ActionResult<IEnumerable<StudentDTO>>> GetStudents(int groupID)
         {
             //Минус подхода в том, что он формирует петли, следовательно, мы не можем автоматически мапить данные в DTO структуры.
-            var studentList = await _context.GetAllAsync<Student>();
+            var studentList = await _context.GetAllAsync<Student>(x => x.Group.GroupId == groupID);
             List<StudentDTO> studentDTOs = new List<StudentDTO>();
             
             foreach (var student in studentList) 
@@ -39,6 +39,7 @@ namespace Backend.Controllers
                 };
                 studentDTOs.Add(studentDTO);
             }
+
             return new ActionResult<IEnumerable<StudentDTO>>(studentDTOs);
         }
 

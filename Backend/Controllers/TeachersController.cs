@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Backend.Models;
+using Backend.Extensions;
 
 namespace Backend.Controllers
 {
@@ -22,9 +23,20 @@ namespace Backend.Controllers
 
         // GET: api/Teachers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Teacher>>> GetTeachers()
+        public async Task<ActionResult<IEnumerable<TeacherDTO>>> GetTeachers()
         {
-            return await _context.Teachers.ToListAsync();
+            var teacherList = await _context.GetAllAsync<Teacher>();
+            List<TeacherDTO> teacherDTOs = new List<TeacherDTO>();
+            foreach (var teacher in teacherList)
+            {
+                var teacherDTO = new TeacherDTO()
+                {
+                    FirstName = teacher.FirstName,
+                    LastName = teacher.LastName,
+                };
+                teacherDTOs.Add(teacherDTO);
+            }
+            return new ActionResult<IEnumerable<TeacherDTO>>(teacherDTOs);
         }
 
         // GET: api/Teachers/5
