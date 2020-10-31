@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student - SolveTask</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" defer></script>
+    <script src="js/data.js" defer></script>
 </head>
 <body>
     <div class="solveTask">
@@ -12,17 +14,41 @@
             <div class="solveTask-content">
                 <div class="first-line">
                     <img src="img/arrow.svg" alt="arrow-go-to-back" class="arrow">
-                    <h2 class="title solve-task">Создать блок с текстом Hw!</h2>
+                    <h2 class="title solve-task">Создать блок с текстом Hello World!</h2>
                 </div>
                 <div class="content-task">
-                    <div class="task-title">
-                        <h2 id="task-title">Задача</h2>
-                        <p>Используя html разметку, выведите на сайт блок, который будет содержать в себе текст Hello world!</p>
+                    <div class="solve-title">
+                        <h2 class="task-title">Задача:</h2>
+                        <p class="task-descr">Используя html разметку, выведите на сайт блок, который будет содержать в себе текст Hello world!
+                        </p>
                     </div>
-                    <div class="task-another-file"></div>
-                    <div class="task-input"></div>
-                    <div class="task-language"></div>
-                    <div class="task-code"></div>
+                    <div class="task-another-file">
+                        <p class="file-title task-title">Доп. файлы для решения:</p>
+                        <div class="file-buttons">
+                            <button class="task-file">style.css</button>
+                            <button class="task-file">style.css</button>
+                            <button class="task-file">style.css</button>
+                        </div>
+                    </div>
+                    <div class="task-input">
+                        <p class="input-title task-title">Ввод:<span class="task-descr" >20 30.</span></p> 
+                        <p class="output-title task-title">Вывод:<span class="task-descr">2030.</span></p> 
+                    </div>
+                    <div class="task-language">
+                        <p class="language-title task-title">Язык программирования:</p>
+                        <select class="check-language" name="check-language">
+                            <option value="Csharp">C#</option>
+                            <option value="Html">Html</option>
+                            <option value="Css">Css</option>
+                        </select>
+                    </div>
+                    <div class="task-code">
+                        <div class="code-line">
+                            <p class="task-title">Решение задачи:</p>
+                            <button class="code-file">Прикрепить файл <img src="img/" alt=""> </button>
+                        </div>
+                        <textarea class="code-task" name="code-task" id="" placeholder="Введите свой код сюда"></textarea>
+                    </div>
                     <div class="task-buttons">
                         <button class="task-button check">Проверить</button>
                         <button class="task-button send">Отправить</button>

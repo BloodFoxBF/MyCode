@@ -31,10 +31,10 @@ if (document.location.pathname == '/Frontend/firstStudent.html') {
     sectionMarks.addEventListener('click', goToMarks);
     logout.addEventListener('click', logoutFrom);
     sectionTasks.addEventListener('click', goToTasks);
-}
+};
 
 if (document.location.pathname == '/Frontend/myMarks.html') {
-    
+
     function goToTask () {
         document.location.href = 'aboutTask.html';
     };
@@ -45,10 +45,10 @@ if (document.location.pathname == '/Frontend/myMarks.html') {
     
     arrow.addEventListener('click', goToBack);
     cardButton.addEventListener('click', goToTask);
-}
+};
 
 if (document.location.pathname == '/Frontend/tasks.html') {
-    
+
     function goToSolve () {
         document.location.href = 'solveTask.html';
     }
@@ -60,4 +60,13 @@ if (document.location.pathname == '/Frontend/tasks.html') {
     //arrowDown.addEventListener('click', downBlock);
     arrow.addEventListener('click', goToBack);
     solve.addEventListener('click', goToSolve);
-}
+};
+
+if (document.location.pathname == '/Frontend/solveTask.html') {
+
+    function goToBack () {
+        document.location.href = 'tasks.html';
+    };
+
+    arrow.addEventListener('click', goToBack);
+};
