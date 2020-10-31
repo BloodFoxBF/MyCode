@@ -30,6 +30,7 @@ namespace Backend.Controllers
             //Минус подхода в том, что он формирует петли, следовательно, мы не можем автоматически мапить данные в DTO структуры.
             var studentList = await _context.GetAllAsync<Student>();
             List<StudentDTO> studentDTOs = new List<StudentDTO>();
+            
             foreach (var student in studentList) 
             {
                 var studentDTO = new StudentDTO() {
