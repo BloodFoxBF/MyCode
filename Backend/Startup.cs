@@ -37,6 +37,8 @@ namespace Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlite("Data Source=mycode.db");
@@ -69,6 +71,12 @@ namespace Backend
             app.UseRouting();
 
             app.UseSwagger();
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
 
             app.UseSwaggerUI(options =>
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "Conference Planner API v1")
