@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 /*
 * Жизненный цикл зависимостей
 Transient - Самое короткое время жизни. Сколько раз обратились - столько раз был создан, затем потух.
@@ -38,11 +39,11 @@ namespace Backend
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlite("Data Source=conferences.db");
+                options.UseSqlite("Data Source=mycode.db");
             });//scoped по умолчанию
-
+            
             services.AddControllers();
-
+           
             services.AddSwaggerGen(options => { 
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Conference Planner API", Version = "v1" });
                 //Необходимо для подключения документации

@@ -11,48 +11,48 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SpeakersController : ControllerBase
+    public class GroupsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
 
-        public SpeakersController(ApplicationDbContext context)
+        public GroupsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Speakers
+        // GET: api/Groups
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Speaker>>> GetSpeakers()
+        public async Task<ActionResult<IEnumerable<Group>>> GetGroups()
         {
-            return await _context.Speakers.ToListAsync();
+            return await _context.Groups.ToListAsync();
         }
-       
-        // GET: api/Speakers/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Speaker>> GetSpeaker(int id)
-        {
-            var speaker = await _context.Speakers.FindAsync(id);
 
-            if (speaker == null)
+        // GET: api/Groups/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Group>> GetGroup(int id)
+        {
+            var @group = await _context.Groups.FindAsync(id);
+
+            if (@group == null)
             {
                 return NotFound();
             }
 
-            return speaker;
+            return @group;
         }
 
-        // PUT: api/Speakers/5
+        // PUT: api/Groups/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSpeaker(int id, Speaker speaker)
+        public async Task<IActionResult> PutGroup(int id, GroupDTO @group)
         {
-            if (id != speaker.Id)
+            if (id != @group.GroupId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(speaker).State = EntityState.Modified;
+            _context.Entry(@group).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace Backend.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SpeakerExists(id))
+                if (!GroupExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +73,37 @@ namespace Backend.Controllers
             return NoContent();
         }
 
-        // POST: api/Speakers
+        // POST: api/Groups
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Speaker>> PostSpeaker(Speaker speaker)
+        public async Task<ActionResult<Group>> PostGroup(Group @group)
         {
-            _context.Speakers.Add(speaker);
+            _context.Groups.Add(@group);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSpeaker", new { id = speaker.Id }, speaker);
+            return CreatedAtAction("GetGroup", new { id = @group.GroupId }, @group);
         }
 
-        // DELETE: api/Speakers/5
+        // DELETE: api/Groups/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Speaker>> DeleteSpeaker(int id)
+        public async Task<ActionResult<Group>> DeleteGroup(int id)
         {
-            var speaker = await _context.Speakers.FindAsync(id);
-            if (speaker == null)
+            var @group = await _context.Groups.FindAsync(id);
+            if (@group == null)
             {
                 return NotFound();
             }
 
-            _context.Speakers.Remove(speaker);
+            _context.Groups.Remove(@group);
             await _context.SaveChangesAsync();
 
-            return speaker;
+            return @group;
         }
 
-        private bool SpeakerExists(int id)
+        private bool GroupExists(int id)
         {
-            return _context.Speakers.Any(e => e.Id == id);
+            return _context.Groups.Any(e => e.GroupId == id);
         }
     }
 }
