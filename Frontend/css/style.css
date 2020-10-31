@@ -314,6 +314,10 @@ button:focus {
   margin: 30px 0 30px 30px;
 }
 
+.time-block .block-title #block-title {
+  font-size: 20px;
+}
+
 .time-block .solve {
   cursor: pointer;
   min-width: 100px;
