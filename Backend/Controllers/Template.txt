@@ -1,1 +1,12 @@
-﻿using System; public class Program { public static void Main() { @call(); } @func()}
+﻿using System; 
+using System.Collections.Generic;
+using System.Linq;
+
+public class Program 
+{ 
+	public static void Main() 
+	{ 
+		@call
+	} 
+	@func
+}
