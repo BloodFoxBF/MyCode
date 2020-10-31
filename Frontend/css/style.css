@@ -1,0 +1,325 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+button:focus {
+  outline: none;
+}
+
+.container {
+  max-width: 1440px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 36px;
+  margin: 0;
+  cursor: default;
+  margin-bottom: 20px;
+}
+
+.arrow {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  margin-left: 1.5%;
+}
+
+.login-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  display: flex;
+}
+
+.login-button .button {
+  cursor: pointer;
+  min-width: 150px;
+  text-align: center;
+  text-decoration: none;
+  padding: 20px 30px;
+  color: white;
+  background-color: #3353b4;
+  border-radius: 10px;
+  border: 0;
+  margin-right: 15px;
+  transition: background-color 0.3s, border 0.4s;
+}
+
+.login-button .button:last-child {
+  margin-right: 0;
+}
+
+.login-button .button:focus {
+  outline: none;
+}
+
+.login-button .button:hover {
+  padding: 17px 27px;
+  color: #3353b4;
+  font-weight: bold;
+  background-color: white;
+  border: 3px solid #3353b4;
+}
+
+.login-content {
+  padding-top: calc(50vh - 120px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-content .button {
+  min-width: 80px;
+  text-align: center;
+  text-decoration: none;
+  padding: 15px 30px;
+  color: white;
+  cursor: pointer;
+  background-color: #2589de;
+  border-radius: 10px;
+  border: 0px;
+}
+
+.nav-content .button:hover {
+  background-color: #3353b4;
+  transition: background-color 0.3s;
+}
+
+.sections-content {
+  margin: auto;
+  padding-top: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sections-content .sections-marks, .sections-content .sections-tasks {
+  cursor: pointer;
+  width: 450px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 47px;
+  padding: 130px 80px;
+  background-color: #2589de;
+  margin-right: 35px;
+  transition: background-color 0.3s;
+}
+
+.sections-content .sections-marks:last-child, .sections-content .sections-tasks:last-child {
+  margin-right: 0;
+}
+
+.sections-content .sections-marks:hover, .sections-content .sections-tasks:hover {
+  background-color: #3353b4;
+}
+
+.first-line {
+  display: flex;
+  margin: 0;
+  margin-top: 40px;
+}
+
+.marks-content .content-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.marks-content .content-row .content-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.marks-content .content-row .last-marks-row-cards {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.time-title {
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.time-data {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.row-card {
+  margin-top: 20px;
+  margin-right: 30px;
+  min-width: 300px;
+  max-width: 23%;
+  display: flex;
+  flex-direction: column;
+  min-width: 50px;
+  text-align: center;
+  align-items: center;
+  background-color: #e9f3fc;
+}
+
+.row-card:last-child {
+  margin-right: 0;
+}
+
+.card-button {
+  margin-bottom: 20px;
+  padding: 15px 25px;
+  background-color: #2589de;
+  border: 0px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  min-width: 150px;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.card-button:hover {
+  background-color: #3353b4;
+}
+
+.card-title {
+  margin: 0;
+  padding: 0;
+  max-width: 80%;
+  padding: 0 10px 0 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  line-height: 29px;
+  text-align: center;
+}
+
+.card-number {
+  margin-left: 20px;
+  color: white;
+  font-size: 20px;
+  padding: 20px 20px;
+  background-image: url("../img/ellipseForMarks.svg");
+  background-position: center center;
+  background-size: contain;
+  text-align: center;
+  background-repeat: no-repeat;
+}
+
+.card-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 15px 10px;
+  width: 80%;
+  background-color: white;
+}
+
+.card-text {
+  font-size: 20px;
+}
+
+.row-card4 {
+  margin-right: 0 !important;
+}
+
+.content-task {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-move {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.task-move:last-child {
+  margin-bottom: 0;
+}
+
+.move-line {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e9f3fc;
+  position: relative;
+}
+
+.content-text {
+  font-weight: medium;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.content-number {
+  font-weight: medium;
+  font-size: 20px;
+  margin-right: 40px;
+  margin-left: auto;
+}
+
+.arrowDown {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.task-time {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-time .time-title {
+  padding-bottom: 20px;
+}
+
+.time-block {
+  width: 100%;
+  align-items: center;
+  display: inline-flex;
+  justify-content: space-between;
+  background-color: #e9f3fc;
+}
+
+.time-block .block-title {
+  background-color: white;
+  margin: 30px 0 30px 30px;
+}
+
+.time-block .solve {
+  cursor: pointer;
+  min-width: 100px;
+  padding: 15px 30px;
+  background-color: #2589de;
+  border-radius: 10px;
+  border: 0;
+  color: white;
+}
