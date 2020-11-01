@@ -102,7 +102,9 @@ $light-blue: rgb(233, 243, 252);
         }
     }
 }
-
+.teacherTask {
+    text-decoration: none;
+}
 .sections-content {
     margin: auto;
     padding-top: 25vh;
@@ -261,9 +263,13 @@ $light-blue: rgb(233, 243, 252);
         margin-bottom: 0;
     }
 }
+.time-block {
+    margin-bottom: 20px;
+}
 .move-line {
     padding: 20px 40px;
     display: flex;
+    margin-bottom: 20px;
     align-items: center;
     justify-content: space-between;
     background-color: $light-blue;
@@ -307,7 +313,7 @@ $light-blue: rgb(233, 243, 252);
             font-size: 20px;
         }
     }
-    .solve {
+    .button-tasks {
         cursor: pointer;
         min-width: 100px;
         padding: 15px 30px;
@@ -415,6 +421,12 @@ $light-blue: rgb(233, 243, 252);
 }
 .check {
     margin-right: 20px;
+}
+.code-output {
+    background-color: $light-blue;
+    padding: 30px 30px;
+    color: black;
+    margin-bottom: 20px;
 }
 .task-buttons {
     display: flex;

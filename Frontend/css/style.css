@@ -105,6 +105,10 @@ button:focus {
   transition: background-color 0.3s;
 }
 
+.teacherTask {
+  text-decoration: none;
+}
+
 .sections-content {
   margin: auto;
   padding-top: 25vh;
@@ -266,10 +270,14 @@ button:focus {
   margin-bottom: 0;
 }
 
+.time-block {
+  margin-bottom: 20px;
+}
+
 .move-line {
-  width: 100%;
   padding: 20px 40px;
   display: flex;
+  margin-bottom: 20px;
   align-items: center;
   justify-content: space-between;
   background-color: #e9f3fc;
@@ -323,7 +331,7 @@ button:focus {
   font-size: 20px;
 }
 
-.time-block .solve {
+.time-block .button-tasks {
   cursor: pointer;
   min-width: 100px;
   padding: 15px 30px;
@@ -361,10 +369,10 @@ button:focus {
 }
 
 .task-title {
-  font-size: 20px;
-  font-weight: bold;
   padding: 0;
   margin: 0;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .task-file {
@@ -442,6 +450,13 @@ button:focus {
 
 .check {
   margin-right: 20px;
+}
+
+.code-output {
+  background-color: #e9f3fc;
+  padding: 30px 30px;
+  color: black;
+  margin-bottom: 20px;
 }
 
 .task-buttons {

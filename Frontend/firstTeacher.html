@@ -7,59 +7,20 @@
     <title>Teacher - Home page</title>
 </head>
 <body>
-    <div class="tasks">
+    <nav class="nav">
         <div class="container">
-            <div class="tasks-content">
-                <div class="first-line">
-                    <img src="img/arrow.svg" alt="arrow-go-to-back" class="arrow">
-                    <h2 class="title task-title">Задания</h2>
+            <div class="nav-content">
+                <div class="nav-logout">
+                    <button onclick="logoutFrom" class="button button-logout">Выйти</button>
                 </div>
-                <div class="content-tasks">
-                    <div class="task-move">
-                        <div class="move-line">
-                            <span class="content-text">Решено</span>
-                            <span class="content-number solved-number">30</span>
-                            <img class="arrowDown" src="img/arrowDown.svg" alt="arrowDown">
-                        </div>
-                        <div class="done-content .disable">
-                            <div class="tasks-time">
-                                <p class="time-title">15 сентября - 20 сентября</p>
-                                <div class="time-block">
-                                    <div class="block-title">
-                                        <p id="block-title">Задача:</p>
-                                        <span class=" block-descr">Создать блок с текстом html</span>
-                                    </div>
-                                </div>
-                                <div class="block-students">
-                                    <div class="student-column">
-                                        <p class="student-name">Гусева Любовь Дмитриевна</p>
-                                        <button class="student-check">Проверить</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task-move">
-                        <div class="move-line">
-                            <span class="content-text">Не решено</span>
-                            <span class="content-number notsolved-number">2</span>
-                            <img class="arrowDown" src="img/arrowDown.svg" alt="arrowDown">
-                        </div>
-                        <div class="done-content .disable">
-
-                        </div>
-                    </div>
-                    <div class="task-move">
-                        <div class="move-line">
-                            <span class="content-text">Проверяется</span>
-                            <span class="content-number check-number">30</span>
-                            <img class="arrowDown" src="img/arrowDown.svg" alt="arrowDown">
-                        </div>
-                        <div class="done-content .disable">
-
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="sections">
+        <div class="container">
+            <div class="sections-content">
+                <div class="sections-marks teacher-marks">ИКТ Журнал</div>
+                <div class="sections-tasks teacher-tasks">Задания</div>
             </div>
         </div>
     </div>

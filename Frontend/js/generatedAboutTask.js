@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student - SolveTask</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
-</head>
-<body>
-    <div class="solveTask">
-        <div class="container">
-            <div class="solveTask-content">
-                <div class="first-line">
-                    <img src="img/arrow.svg" alt="arrow-go-to-back" class="arrow">
-                    <h2 class="title solve-task"></h2>
-                </div>
-                <div class="content-task">
-                    <div class="solve-title">
+const contentTask = document.querySelector('.content-task');
+const url = `https://localhost:44388/api/Problem`;
+
+const getData = async function (url) {
+    const response = await fetch(url);
+    if (!response.ok) {
+        throw new Error('Что-то пошло не так')
+    }
+    const data = response.json();
+    return await data;
+};
+
+getData(url).then(function (data) {
+    console.log('Данные получены');
+})
+
+function generatedTask () {
+    const code = `
+    <div class="solve-title">
                         <h2 class="task-title">Задача:</h2>
-                        <p class="task-descr">
+                        <p class="task-descr">Используя html разметку, выведите на сайт блок, который будет содержать в себе текст Hello world!
                         </p>
                     </div>
                     <div class="task-another-file">
@@ -48,16 +48,32 @@
                         </div>
                         <textarea class="code-task" name="code-task" id="" placeholder="Введите свой код сюда"></textarea>
                     </div>
-                    <div class="code-output">
-
-                    </div>
                     <div class="task-buttons">
                         <button class="task-button check">Проверить</button>
                         <button class="task-button send">Отправить</button>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+    `;
+    contentTask.insertAdjacentHTML('beforeend', code);
+}
+generatedTask();
+
+const buttonStudentTask = document.querySelector('.send');
+
+
+
+
+function onClickGetData () {
+    const getData = async function (url) {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Что-то пошло не так')
+        }
+        const data = response.json();
+        return await data;
+    };
+    
+    getData(url).then(function (data) {
+        console.log('Данные отправлены');
+    })
+}
+buttonStudentTask.addEventListener('click', onClickGetData);
